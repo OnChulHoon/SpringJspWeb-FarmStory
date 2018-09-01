@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.farmstory.mapper.PlantMapper">
+	
+	<insert id="insertPlantInfo" parameterType="Plant">
+		INSERT INTO PLANT (PLA_NAME, PLA_TYPE, PLA_SIMPLE, PLA_CONTENT,
+						   PLA_MINTEM, PLA_MAXTEM, PLA_MINHUM, PLA_MAXHUM,
+					 	   PLA_MINLUX, PLA_MAXLUX )
+		VALUE (#{ plaName }, #{ plaType }, #{ plaSimple }, #{ plaContent },
+			   #{ plaMinTem }, #{ plaMaxTem }, #{ plaMinHum }, #{ plaMaxHum },
+			   #{ plaMinLux }, #{ plaMaxLux })
+		<selectKey keyProperty="plaNo" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>	   
+	</insert>
+	
+	<insert id="insertPlantInfoImages" parameterType="PlantImg">
+		INSERT INTO PLANT_IMG (PLA_NO, PLI_IMG, IMG_IDX)
+		VALUE (#{ plaNo }, #{ pliImg }, #{ imgIdx })
+	</insert>
+	
+	<select id="selectPlantInfosWithThumnailImages" resultType="Plant">
+		SELECT P.PLA_NO plaNo, P.PLA_NAME plaName, P.PLA_TYPE plaType, P.PLA_SIMPLE plaSimple,
+			   P.PLA_CONTENT plaContent,
+			   P.PLA_MINTEM plaMinTem, P.PLA_MAXTEM plaMaxTem, P.PLA_MINHUM plaMinTem, P.PLA_MAXHUM plaMaxHum,
+			   P.PLA_MINLUX plaMinLux, P.PLA_MAXLUX plaMaxLux, I.PLI_IMG pliImg
+		FROM PLANT P
+		JOIN PLANT_IMG I
+		ON P.PLA_NO = I.PLA_NO
+		WHERE I.IMG_IDX = 1
+		ORDER BY P.PLA_NO DESC
+	</select>
+	
+	<resultMap type="Plant" id="plantInfoMap">
+		<id column="PLA_NO" property="plaNo"/>
+		<id column="PLA_NAME" property="plaName"/>
+		<id column="PLA_TYPE" property="plaType"/>
+		<id column="PLA_SIMPLE" property="plaSimple"/>
+		<id column="PLA_CONTENT" property="plaContent"/>
+		<id column="PLA_MINTEM" property="plaMinTem"/>
+		<id column="PLA_MAXTEM" property="plaMaxTem"/>
+		<id column="PLA_MINHUM" property="plaMinHum"/>
+		<id column="PLA_MAXHUM" property="plaMaxHum"/>
+		<id column="PLA_MINLUX" property="plaMinLux"/>
+		<id column="PLA_MAXLUX" property="plaMaxLux"/>
+	</resultMap>
+	
+	<select id="selectPlantInfoByPlaNo" resultMap="plantInfoMap">
+		SELECT PLA_NO, PLA_NAME, PLA_TYPE, PLA_CONTENT, PLA_SIMPLE,
+			   PLA_MINTEM, PLA_MAXTEM,
+			   PLA_MINHUM, PLA_MAXHUM,
+			   PLA_MINLUX, PLA_MAXLUX
+		FROM PLANT
+		WHERE PLA_NO = #{ plaNo }
+	</select>
+	
+	<select id="selectImagesPlantInfoByPlaNo" resultType="PlantImg">
+		SELECT PLI_IMG pliImg
+		FROM PLANT_IMG
+		WHERE PLA_NO = #{ plaNo } AND IMG_IDX > 1
+	</select>
+	
+	<delete id="deletePlantInfoByPlaNo" parameterType="Plant">
+		DELETE FROM PLANT
+		WHERE PLA_NO = #{ palNo }
+	</delete>
+	
+	<delete id="deleteImagesPlantInfoByPlaNo" parameterType="PlantImg">
+		DELETE FROM PLANT_IMG
+		WHERE PLA_NO = #{ palNo }
+	</delete>
+	
+	<select id="selectModifyImagesPlantInfoByPlaNo" resultType="PlantImg">
+		SELECT PLI_IMG pliImg, IMG_IDX imgIdx, PLI_NO pliNo
+		FROM PLANT_IMG
+		WHERE PLA_NO = #{ plaNo }
+	</select>
+	
+	<select id="selectLastImgIdxValueByPlaNo" resultType="int" parameterType="int">
+		SELECT IMG_IDX imgIdx
+		FROM PLANT_IMG
+		WHERE PLA_NO = #{ plaNo }
+		ORDER BY IMG_IDX DESC LIMIT 1;
+	</select>
+	
+	<update id="updatePlantInfo" parameterType="Plant">
+		UPDATE PLANT SET
+			PLA_NAME = #{ plaName },
+			PLA_TYPE = #{ plaType },
+			PLA_CONTENT = #{ plaContent },
+			PLA_SIMPLE = #{ plaSimple },
+		    PLA_MINTEM = #{ plaMinTem },
+		    PLA_MAXTEM = #{ plaMaxTem },
+		    PLA_MINHUM = #{ plaMinHum },
+		    PLA_MAXHUM = #{ plaMaxHum },
+		    PLA_MINLUX = #{ plaMinLux },
+		    PLA_MAXLUX = #{ plaMaxLux }
+		WHERE PLA_NO = #{ plaNo }
+	</update>
+	
+	<update id="updateThumnailImagePlantInfo" parameterType="PlantImg">
+		UPDATE PLANT_IMG SET
+			PLI_IMG = #{ pliImg }
+		WHERE PLA_NO = #{ plaNo } AND IMG_IDX = 1;
+	</update>
+	
+	<delete id="deleteOldImageFileByPlaNoAndImgIdx" parameterType="hashmap">
+		DELETE FROM PLANT_IMG
+		WHERE PLA_NO = #{ plaNo } AND IMG_IDX = #{ imgIdx }
+	</delete>
+	
+	
+	
+</mapper> 

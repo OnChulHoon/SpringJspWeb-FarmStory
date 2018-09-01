@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+ <configuration>
+
+	<!-- 외부에 설정된 프로퍼티 파일의 경로를 불러온다. -->
+	<properties resource="mysql-environment.properties"/>
+
+	<typeAliases>
+		
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${datasource.driverClassName}" />
+				<property name="url" value="${datasource.url}" />
+				<property name="username" value="${datasource.username}" />
+				<property name="password" value="${datasource.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+				
+	</mappers>
+
+</configuration>

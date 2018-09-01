@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'godoM';
+	src: url("../../assets/fonts/godo/GodoM.eot");
+	src: url("../../assets/fonts/godo/GodoM.eot#iefix")
+		format('embedded-opentype'),
+		url("../../assets/fonts/godo/GodoM.woff") format('woff'),
+		url("../../assets/fonts/godo/GodoM.ttf") format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'godoB';
+	src: url("../../assets/fonts/godo/GodoB.eot");
+	src: url("../../assets/fonts/godo/GodoB.eot#iefix")
+		format('embedded-opentype'),
+		url("../../assets/fonts/godo/GodoB.woff") format('woff'),
+		url("../../assets/fonts/godo/GodoB.ttf")format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

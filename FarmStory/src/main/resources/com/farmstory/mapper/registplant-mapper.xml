@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.farmstory.mapper.RegistPlantMapper">
+
+	<select id="selectShowPlant" resultType="Plant">
+		SELECT PLA_NAME plaName, PLA_NO plaNo
+		FROM PLANT
+	</select>
+
+	<insert id="insertRegistPlant" parameterType="RegistPlant">
+		INSERT INTO REGISTPLANT (MEM_ID, PLA_NO, REG_POTNO)
+		VALUES (#{memId}, #{plaNo}, #{regPotNo})
+	</insert>
+
+	<select id="searchPlant" parameterType="string"
+		resultType="Plant">
+		SELECT PLA_NAME plaName, PLA_NO plaNo
+		FROM PLANT
+		WHERE PLA_NAME LIKE CONCAT('%',#{plaName},'%')
+	</select>
+
+
+	<select id="potNoTest" parameterType="string"
+		resultType="Integer">
+		SELECT COUNT(*) FROM REGISTPLANT
+		WHERE
+		REG_POTNO = #{regPotNo}
+	</select>
+	
+	<select id="selectRegistFlowerpotByMemId" resultType="RegistPlant">
+		SELECT R.REG_POTNO regPotNo, R.MEM_ID memId,
+			   P.PLA_NAME plaName, I.PLI_IMG pliImg, R.PLA_NO plaNo
+		FROM REGISTPLANT R
+		JOIN PLANT P
+		ON R.PLA_NO = P.PLA_NO
+		JOIN PLANT_IMG I
+		ON P.PLA_NO = I.PLA_NO
+		WHERE R.MEM_ID = #{memId} AND I.IMG_IDX = 1
+	</select>
+	
+	<delete id="deleteMyFlowerpotByRegPotNo" parameterType="RegistPlant">
+		DELETE FROM REGISTPLANT
+		WHERE REG_POTNO = #{regPotNo}
+	</delete>
+</mapper>  

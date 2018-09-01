@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.farmstory.mapper.DiaryMapper">
+
+	<insert id="insertDiary" parameterType="Diary">
+		INSERT INTO DIARY (DIA_DATE, DIA_TITLE, DIA_CONTENT, MEM_ID, DIB_NO)
+		VALUES (#{diaDate}, #{diaTitle}, #{diaContent}, #{memId}, #{dibNo})
+		<selectKey resultType="int" keyProperty="diaNo" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<insert id="insertDiaryImage" parameterType="DiaryImg">
+		INSERT INTO DIARY_IMG (DII_IMG, DIA_NO, DIB_NO)
+		VALUES (#{diiImg}, #{diaNo}, #{dibNo})
+	</insert>
+
+	<!-- 여기서 DIA_NO를 조회 -->
+	<select id="findDiary" parameterType="hashmap" resultType="Diary">
+		SELECT D.DIA_NO diaNo, D.DIA_DATE diaDate, D.DIA_TITLE diaTitle, D.DIB_NO dibNo,
+		D.DIA_CONTENT diaContent, D.MEM_ID memId
+		FROM DIARY D
+		JOIN MEMBER M
+		ON D.MEM_ID = M.MEM_ID
+		WHERE D.MEM_ID = #{memId} AND D.DIB_NO = #{dibNo}
+		<if test='diaTitle != null and diaTitle != ""'>
+			AND D.DIA_TITLE LIKE CONCAT('%', #{ diaTitle }, '%')
+		</if>
+		ORDER BY D.DIA_NO DESC
+		LIMIT #{ from } , #{ to }
+
+		<!-- WHERE B.IDX >= #{from} and B.IDX <![CDATA[ < ]]> #{to} -->
+		<!-- WHERE ROWNUM BETWEEN 0 AND 3 -->
+
+	</select>
+
+	<select id="findDiaryImg" parameterType="int" resultType="DiaryImg">
+		SELECT I.DIA_NO diaNo, I.DII_IMG diiImg, D.MEM_ID memId
+		FROM DIARY_IMG I
+		JOIN DIARY D
+		ON I.DIA_NO = D.DIA_NO
+		WHERE D.DIA_NO = #{diaNo}
+	</select>
+
+	<select id="findDiaryAllImg" parameterType="hashmap" resultType="DiaryImg">
+		SELECT I.DIA_NO diaNo, I.DII_IMG diiImg, D.MEM_ID memId, D.DIB_NO dibNo
+		FROM DIARY_IMG I
+		JOIN DIARY D
+		ON I.DIA_NO = D.DIA_NO
+		WHERE D.MEM_ID = #{memId} AND D.DIB_NO = #{dibNo}
+	</select>
+
+	<select id="selectCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) FROM DIARY
+		WHERE MEM_ID = #{memId} AND DIB_NO = #{dibNo}
+	</select>
+	
+	<select id="findDiaryByDiaryNo" parameterType="String" resultType="Diary">
+		SELECT DIA_NO diaNo, DIA_DATE diaDate, DIA_TITLE diaTitle, DIA_CONTENT diaContent
+		FROM DIARY
+		WHERE DIA_NO = #{diaNo}
+	</select>
+	
+	<select id="findDiaryImgByDiaryNo" parameterType="String" resultType="DiaryImg">
+		SELECT DIA_NO diaNo, DII_IMG diiImg
+		FROM DIARY_IMG
+		WHERE DIA_NO = #{diaNo}
+	</select>
+	
+	<delete id="deleteDiaryImg" parameterType="String">
+	DELETE FROM DIARY_IMG WHERE DIA_NO = #{diaNo}
+	</delete>
+	
+	<delete id="deleteDiary" parameterType="String">
+	DELETE FROM DIARY WHERE DIA_NO = #{diaNo}
+	</delete>
+	
+	<!-- <delete id="deleteDiaryImgByAjax" parameterType="String">
+	DELETE FROM DIARY_IMG WHERE DIA_NO = #{diaNo}
+	</delete> -->
+	
+	<delete id="deleteImgForUpdate" parameterType="int">
+	DELETE FROM DIARY_IMG WHERE DIA_NO = #{diaNo}
+	</delete>
+	
+	<update id="updateDiary" parameterType="Diary">
+	UPDATE DIARY SET DIA_NO = #{diaNo}, DIA_DATE = #{diaDate}, DIA_TITLE = #{diaTitle}, DIA_CONTENT = #{diaContent}
+	WHERE DIA_NO = #{diaNo}
+	</update>
+	
+	<select id="findDiaryCategory" parameterType="String" resultType="Diary">
+	SELECT D.DIA_TITLE diaTitle, D.MEM_ID memId, D.DIA_CATEGORY diaCategory, D.DIA_BOOKNAME diaBookName
+		FROM DIARY D
+		JOIN MEMBER M
+		ON D.MEM_ID = M.MEM_ID
+		WHERE D.MEM_ID = #{memId}	
+	</select>
+	
+	<select id="selectPlantInfoForInsertDirayBook" resultType="DiaryBook">
+	SELECT PLA_NAME plaName, PLA_TYPE plaType
+	FROM PLANT
+	WHERE PLA_NO = #{plaNo}
+	</select>
+	
+	<insert id="insertDiaryBook" parameterType="DiaryBook">
+	INSERT INTO DIARY_BOOK (DIA_NAME, REG_POTNO, PLA_NAME, MEM_ID, DIB_IMG, DIA_CATEGORY)
+	VALUES (#{diaName}, #{regPotNo}, #{plaName}, #{memId}, #{dibImg}, #{diaCategory})
+	</insert>
+	
+	<select id="selectDiaryBookListByMemId" resultType="DiaryBook">
+	SELECT DIB_NO dibNo, DIA_NAME diaName, REG_POTNO regPotNo, PLA_NAME plaName, MEM_ID memId, DIB_IMG dibImg, DIA_CATEGORY diaCategory
+	FROM DIARY_BOOK
+	WHERE MEM_ID = #{memId}
+	</select>
+	
+	<select id="selectDiaryBookInfo" parameterType="int" resultType="DiaryBook">
+	SELECT DIB_NO dibNo, DIA_NAME diaName, REG_POTNO regPotNo, PLA_NAME plaName, DIA_CATEGORY diaCategory
+	FROM DIARY_BOOK
+	WHERE DIB_NO = #{dibNo}
+	</select>
+	
+	<delete id="deleteDiaryBook" parameterType="int">
+	DELETE FROM DIARY_BOOK WHERE DIB_NO = #{dibNo}
+	</delete>
+
+	
+</mapper>  

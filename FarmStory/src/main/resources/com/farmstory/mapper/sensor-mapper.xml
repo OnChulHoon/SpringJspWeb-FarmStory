@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.farmstory.mapper.SensorMapper">
+	
+	<insert id="writeSensor" parameterType="PlantVal">
+		INSERT INTO PLANT_VAL (REG_POTNO, PLV_TYPE, PLV_VAL) VALUES (#{regPotNo}, #{plvType}, #{plvVal})
+	</insert>
+	
+	<insert id="writeAlarm" parameterType="PlantVal">
+		<selectKey resultType="String" keyProperty="memberId"
+			order="BEFORE">
+			SELECT MEM_ID memberId FROM REGISTPLANT WHERE REG_POTNO = #{regPotNo}
+		</selectKey>
+		INSERT INTO ALARM ( MEM_ID, REG_POTNO )
+		VALUES
+		( #{memberId}, #{regPotNo} )
+	</insert>
+</mapper> 

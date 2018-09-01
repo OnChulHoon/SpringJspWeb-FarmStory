@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.farmstory.mapper.CoverMapper">
+
+	<!-- 쓰기부분 -->
+	<insert id="insertCover" parameterType="Cover">
+		INSERT INTO COVER
+		(COV_TITLE, COV_LCONTENT, COV_RCONTENT, COV_IMG)
+		VALUES
+		(#{covTitle},#{covLcontent},#{covRcontent},#{covImg})
+	</insert>
+
+	<!-- 목록 보여주기 -->
+
+	<select id="selectCoverList" resultType="Cover">
+		SELECT
+		COV_NO covNo, COV_TITLE covTitle,
+		COV_LCONTENT covLcontent, COV_RCONTENT covRcontent,
+		COV_IMG covImg
+		FROM COVER
+		ORDER BY COV_NO DESC
+	</select>
+	
+	<!-- 가장 최근 쓴 것만 보여줍니다. -->
+	<select id="selectTop3CoverList" resultType="Cover">
+		SELECT
+			COV_NO covNo, COV_TITLE covTitle,
+			COV_LCONTENT covLcontent, COV_RCONTENT covRcontent,
+			COV_IMG covImg
+		FROM COVER
+		ORDER BY COV_NO DESC
+        LIMIT 0, 3
+	</select>
+
+	<!-- 상세 보여주기 부분 소비자 -->
+	<select id="selectCoverInfoByCovNo" resultType="Cover">
+		SELECT COV_NO
+		covNo, COV_TITLE covTitle,
+		COV_LCONTENT covLcontent, COV_RCONTENT covRcontent,
+		COV_IMG covImg
+		FROM COVER
+		WHERE COV_NO = #{ covNo }
+	</select>
+
+	<!-- 상세 보여주기 부분 관리자 -->
+	<select id="selectCovermInfoByCovNo" resultType="Cover">
+		SELECT COV_NO
+		covNo, COV_TITLE covTitle,
+		COV_LCONTENT covLcontent, COV_RCONTENT covRcontent,
+		COV_IMG covImg
+		FROM COVER
+		WHERE COV_NO = #{ covNo }
+	</select>
+
+	<!-- 수정 부분 -->
+	<update id="updateCover" parameterType="Cover">
+		UPDATE COVER
+		SET
+		COV_TITLE = #{covTitle},
+		COV_LCONTENT = #{covLcontent},
+		COV_RCONTENT = #{covRcontent},
+		COV_IMG = #{covImg}
+		WHERE COV_NO = #{covNo}
+
+	</update>
+
+	<!-- 삭제 부분 -->
+	<delete id="deleteCover" parameterType="Cover">
+		DELETE FROM COVER
+		WHERE COV_NO = #{covNo}
+	</delete>
+</mapper>  

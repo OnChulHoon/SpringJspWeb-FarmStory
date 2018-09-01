@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DB 연결 MyBatis 기반 -->	
+	<!-- 외부의 DB 연결 설정 파일을 읽어서 사용할 수 있도록 한다. -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:mysql-environment.properties"></property>
+	</bean>
+		
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${datasource.driverClassName}"/>
+		<property name="url" value="${datasource.url}"/>
+		<property name="username" value="${datasource.username}"/>
+		<property name="password" value="${datasource.password}"/>
+	</bean>
+	
+	<!-- MyBatis -> Spring 연결 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>	
+	</bean>
+	
+	<bean id="sqlSessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+
+	
+<!-- /////.....각 기능별 의존성 주입.....////////////////////////////////////////////////////////////////////////////////////////////////////// -->	
+	
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->	
+	
+	<!-- 인증시스템 관리 -->
+	<import resource="classpath:com/farmstory/config/account-config.xml" />
+	
+	<!-- 아두이노를 이용한 센서값 불러오기 -->
+	<import resource="classpath:com/farmstory/config/sensor-config.xml" />
+	<import resource="classpath:com/farmstory/config/notice-config.xml" />
+		
+	<!-- 나의 화분등록 정보보기 -->
+	<import resource="classpath:com/farmstory/config/registplant-config.xml"/>
+	
+	<!-- 나의 화분 정보보기 -->
+	<import resource="classpath:com/farmstory/config/value-config.xml"/>
+	
+	<!-- 나의 화분 다이어리 -->
+	<import resource="classpath:com/farmstory/config/diary-config.xml"/>
+	
+	<!-- 식물 정보 관리 -->
+	<import resource="classpath:com/farmstory/config/plant-config.xml" />
+	
+	<!-- 소개 페이지 관리 -->
+	<import resource="classpath:com/farmstory/config/cover-config.xml" />
+	
+
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->		
+</beans>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.farmstory.mapper.ValueMapper">
+
+	<resultMap type="PlantVal" id="plantVal">
+		<id column="PLV_NO" property="plvNo" />
+		<result column="REG_POTNO" property="regPotNo" />
+		<result column="PLV_DATETIME" property="plvDateTime" />
+		<result column="PLV_TYPE" property="plvType" />
+		<result column="PLV_VAL" property="plvVal" />
+	</resultMap>
+
+	<select id="selectValues" parameterType="PlantVal"
+		resultMap="plantVal">
+		SELECT REG_POTNO, DATE_FORMAT(PLV_DATETIME, '%Y-%m-%d %H:%i') PLV_DATETIME, PLV_TYPE, PLV_VAL
+		FROM PLANT_VAL
+		WHERE DATE(PLV_DATETIME) = #{ plvDateTime } AND REG_POTNO = #{ regPotNo }
+		ORDER BY PLV_DATETIME DESC
+	</select>
+
+	<select id="selectDayValues" parameterType="PlantVal"
+		resultMap="plantVal">
+		SELECT REG_POTNO, DATE_FORMAT(PLV_DATETIME, '%Y-%m-%d') PLV_DATETIME, PLV_TYPE, AVG(PLV_VAL) PLV_VAL
+		FROM PLANT_VAL
+		WHERE DATE(PLV_DATETIME) BETWEEN DATE_ADD(#{ plvDateTime }, INTERVAL - 6 DAY) AND #{ plvDateTime }
+		GROUP BY DATE_FORMAT(PLV_DATETIME, '%Y-%m-%d'), PLV_TYPE, REG_POTNO
+		HAVING REG_POTNO = #{ regPotNo }
+		ORDER BY PLV_DATETIME DESC
+	</select>
+	
+	<select id="selectAlarms" parameterType="String" resultType="Alarm">
+		SELECT A.MEM_ID memberId, A.REG_POTNO regPotNo, A.VAL_TYPE valType
+		FROM ALARM A
+		WHERE A.CHECK = 0 AND A.MEM_ID = #{ id }
+	</select>
+	
+	<update id="updateAlarms" parameterType="String">
+		UPDATE ALARM A 
+        SET A.CHECK = 1
+        WHERE A.CHECK = 0 AND A.MEM_ID = #{ id }
+	</update>
+</mapper>  
