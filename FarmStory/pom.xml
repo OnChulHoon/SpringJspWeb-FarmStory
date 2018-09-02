@@ -233,6 +233,13 @@
 		    <version>2.9.6</version>
 		</dependency>
 		
+		<!-- Maven Resources Plugin -->
+		 <dependency>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-resources-plugin</artifactId>
+		    <version>2.6</version>
+		</dependency>
+		
 
 <!-- ////// Custom Library Section End ////////////////////////////////////////////////////////////// -->
 
