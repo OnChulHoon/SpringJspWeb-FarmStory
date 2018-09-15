@@ -79,8 +79,8 @@ public class PlantController {
 						// 파일 업로드 경로에 원본파일을 수정된 파일이름으로 저장한다.
 						mf.transferTo(new File(fileUploadPath, uniqueFileName));
 						// 지정된 사이즈의 미리보기 이미지로 변환하여 파일 업로드 경로에 저장한다.
-						//Util.makeThumbnail(fileUploadPath, uniqueFileName, 570, 390);
-						Util.makeThumbnail(fileUploadPath, uniqueFileName, 1920, 1440);
+						Util.makeThumbnail(fileUploadPath, uniqueFileName, 570, 390);
+//						Util.makeThumbnail(fileUploadPath, uniqueFileName, 1920, 1440);
 						// 파일 업로드 경로에 변경된 이미지의 이름의 이름을 PlantImg vo에 저장한다.
 						imgFile = new PlantImg();
 						imgFile.setPliImg("thumb_" + uniqueFileName);
@@ -90,7 +90,6 @@ public class PlantController {
 						// 파일의 존재여부를 확인하여 삭제를 실행한다.
 						if (firstUploadFile.exists()) {
 							firstUploadFile.delete();
-							System.out.println("처음 업로드 파일 삭제 완료(thumnail)");
 						}
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -120,11 +119,6 @@ public class PlantController {
 					}
 
 				}
-				// 테스트를 위한 업로드된 파일 정보를 받아온다.
-				long fileSize = mf.getSize(); // 파일 사이즈 정보를 받아온다.
-				System.out.println("uniqueFileName : " + uniqueFileName);
-				System.out.println("fileSize : " + fileSize);
-
 				// 업로드된 여러개의 이미지 파일을 List<PlantImg>형식으로 객체에 저장한다.
 				imgFiles.add(plantImg);
 			}
@@ -231,24 +225,16 @@ public class PlantController {
 					// 파일의 존재여부를 확인하여 삭제를 실행한다.
 					if (firstUploadFile.exists()) {
 						firstUploadFile.delete();
-						System.out.println("처음 업로드 파일 삭제 완료(thumnail)");
 					}
 
 					File oldUploadFile = new File(fileUploadPath + "/" + oldImgFileNames[0]);
 					// 파일의 존재여부를 확인하여 삭제를 실행한다.
 					if (oldUploadFile.exists()) {
 						oldUploadFile.delete();
-						System.out.println("기존 업로드 파일 삭제 완료(thumnail)");
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
-				// 테스트를 위한 업로드된 파일 정보를 받아온다.
-				long fileSize = thumnail.getSize(); // 파일 사이즈 정보를 받아온다.
-				System.out.println("thumb_uniqueFileName : " + uniqueFileName);
-				System.out.println("fileSize : " + fileSize);
-
 				// 미리보기 사진을 DB에서 찾아 수정한다.
 				plantService.modifyThumnailImagePlantInfo(plantThumImg);
 			}
