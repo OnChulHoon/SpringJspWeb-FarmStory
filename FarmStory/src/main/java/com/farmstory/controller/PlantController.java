@@ -1,12 +1,17 @@
 package com.farmstory.controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.farmstory.common.UploadFileUtils;
 import com.farmstory.common.Util;
 import com.farmstory.service.PlantService;
 import com.farmstory.vo.Plant;
@@ -73,7 +79,8 @@ public class PlantController {
 						// 파일 업로드 경로에 원본파일을 수정된 파일이름으로 저장한다.
 						mf.transferTo(new File(fileUploadPath, uniqueFileName));
 						// 지정된 사이즈의 미리보기 이미지로 변환하여 파일 업로드 경로에 저장한다.
-						Util.makeThumbnail(fileUploadPath, uniqueFileName, 570, 390);
+						//Util.makeThumbnail(fileUploadPath, uniqueFileName, 570, 390);
+						Util.makeThumbnail(fileUploadPath, uniqueFileName, 1920, 1440);
 						// 파일 업로드 경로에 변경된 이미지의 이름의 이름을 PlantImg vo에 저장한다.
 						imgFile = new PlantImg();
 						imgFile.setPliImg("thumb_" + uniqueFileName);
@@ -148,12 +155,23 @@ public class PlantController {
 
 		return "plant/plant-detail";
 	}
-
+	
 	@GetMapping(value = "/plant_delete.action")
-	public String deletePlantInfoWithImages(@RequestParam(value = "plaNo") int plaNo) {
-
-		plantService.deletePlantInfoWithImages(plaNo);
-
+	public String deletePlantInfoWithImages(@RequestParam(value = "plaNo") int plaNo, PlantImg plantImg, HttpServletRequest request) {
+		
+		// 삭제할 식물 정보의 사진 파일들의 정보를 찾는다.
+		List<PlantImg> oldImages = plantService.findModifyImagesPlantInfoByPlaNo(plaNo);
+		// 사진파일들의 정보가 있을 경우 모두 삭제한다.
+		if(!oldImages.isEmpty()) {
+			for (PlantImg imgFiles : oldImages) {
+				String oldImageName = "plant-info/" + imgFiles.getPliImg();
+				// 사진 파일을 삭제한다.
+				UploadFileUtils.deleteFile(oldImageName, request);
+			}
+			// 삭제할 식물 정보를 데이터베이스에서 삭제한다.
+			plantService.deletePlantInfoWithImages(plaNo);
+		}
+		
 		return "redirect:/plant_list.action";
 	}
 
@@ -301,21 +319,20 @@ public class PlantController {
 
 	@ResponseBody
 	@GetMapping(value = "/plant_delete_old_img.action")
-	public String deleteOldImgFile(String oldImgFileName, @RequestParam(value = "plaNo") int plaNo,
-			@RequestParam(value = "oldImgIdx") int oldImgIdx) {
+	public String deleteOldImgFile(String oldImgFileName, @RequestParam(value = "plaNo", defaultValue = "-1") int plaNo,
+			@RequestParam(value = "oldImgIdx", defaultValue = "-1") int oldImgIdx, HttpServletRequest request) {
 
-		HashMap<String, Object> params = new HashMap<>();
-		params.put("plaNo", plaNo);
-		params.put("imgIdx", oldImgIdx);
-
-		plantService.deleteOldImageFileByPlaNoAndImgIdx(params);
-		String fileUploadPath = "/resources/upload-image/plant-info/";
-
-		File oldUploadFile = new File(fileUploadPath + oldImgFileName);
-		// 파일의 존재여부를 확인하여 삭제를 실행한다.
-		if (oldUploadFile.exists()) {
-			oldUploadFile.delete();
-			System.out.println("기존 업로드 파일 삭제 완료(resize)");
+		if(oldImgFileName != null && plaNo != -1 && oldImgIdx != -1) {
+			
+			HashMap<String, Object> params = new HashMap<>();
+			params.put("plaNo", plaNo);
+			params.put("imgIdx", oldImgIdx);
+				
+			// 삭제할 식물 정보의 사진 파일의 정보를 찾아 데이터베이스에서 삭제한다.
+			plantService.deleteOldImageFileByPlaNoAndImgIdx(params);
+			// 사진 파일을 서버에서 삭제한다.
+			String oldImageName = "plant-info/" + oldImgFileName;
+			UploadFileUtils.deleteFile(oldImageName, request);
 		}
 
 		return "success";

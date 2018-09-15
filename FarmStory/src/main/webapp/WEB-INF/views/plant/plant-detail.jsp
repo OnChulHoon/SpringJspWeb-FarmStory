@@ -66,12 +66,12 @@
 						<h2>${ plant.plaName }</h2>
 						<p class="text-small">${ plant.plaContent }</p>
 
-						<ul class="item-details inner-top-xs outer-top-xs border-top detailVal">
-							<li class="date">생육 적정 온도 : <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최소 ${ plant.plaMinTem } <sup>o</sup>C ~ 최대 ${ plant.plaMaxTem } <sup>o</sup>C</li>
-							<li class="categories">생육 적정 수분량 : <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최소 ${ plant.plaMinHum } % ~
-								최대 ${ plant.plaMaxHum } %</li>
-							<li class="client">생육 적정 조도 : <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최소 ${ plant.plaMinLux } Lux ~
-								최대 ${ plant.plaMaxLux } Lux</li>
+						<ul class="item-details inner-top-xs outer-top-xs border-top detailVal text-left">
+							<li class="icon-detail"><i class="icon-thermometer"></i>&nbsp;생육 적정 온도<span class="next-line">최소 ${ plant.plaMinTem } <sup>o</sup>C ~ 최대 ${ plant.plaMaxTem } <sup>o</sup>C</span><br></li>
+							<li class="icon-detail"><i class="icon-water"></i>&nbsp;생육 적정 수분량<span class="next-line">&nbsp;&nbsp;최소 ${ plant.plaMinHum } % ~
+								최대 ${ plant.plaMaxHum } %</span><br></li>
+							<li class="icon-detail"><i class="icon-light-up"></i>&nbsp;생육 적정 조도<span class="next-line">최소 ${ plant.plaMinLux } Lux ~
+								최대 ${ plant.plaMaxLux } Lux</span></li>
 						</ul>
 						<!-- /.item-details -->
 					</header>

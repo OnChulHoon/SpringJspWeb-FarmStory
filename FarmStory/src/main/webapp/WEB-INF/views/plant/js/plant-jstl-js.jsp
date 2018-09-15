@@ -50,8 +50,15 @@
 		});
 		
 		$("a#backBtn").on("click", function(event) {
-			history.back();
+			event.preventDefault();
+			location.href="/farmstory/plant_detail.action?plaNo=${ plant.plaNo }";
 		});
+		
+		$("a#listBtn").on("click", function(event) {
+			event.preventDefault();
+			location.href="/farmstory/plant_list.action";
+		});
+		
 
 	/* =================== Plant Write&Update : End  ====================================================== */
 	

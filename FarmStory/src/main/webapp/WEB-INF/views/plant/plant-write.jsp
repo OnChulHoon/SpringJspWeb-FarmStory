@@ -189,7 +189,7 @@
 								</div>
 								<!-- /.row -->
 
-								<a id="backBtn" href="#" class="btn pull-right writeMeunBtn">이전으로</a>
+								<a id="listBtn" href="#" class="btn pull-right writeMeunBtn">목록으로</a>
 								<a id="writePlantInfoBtn" href="#"
 									class="btn pull-right writeMeunBtn">정보 등록하기</a> <a href="#this"
 									id="add" class="btn pull-right writeMeunBtn">사진 추가하기</a>

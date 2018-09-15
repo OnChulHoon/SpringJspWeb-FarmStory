@@ -2,6 +2,7 @@ package com.farmstory.common;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
@@ -15,6 +16,7 @@ import javax.management.RuntimeErrorException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.imgscalr.Scalr;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Util {
 	
@@ -236,5 +238,15 @@ public class Util {
     	    // 사이즈 조정된 이미지를 경로에 저장한다.
             ImageIO.write(resizeImage, "jpg", new File(imgOriginalPath, resizeFileName));
 	}
+	
+	public static File convertMutltiPartToFile(MultipartFile file) throws Exception {
+		
+		File convertFile = new File(file.getOriginalFilename());
+		FileOutputStream fos = new FileOutputStream(convertFile);
+		fos.write(file.getBytes());
+		fos.close();
+		return convertFile;
+	}
+	
 
 }

@@ -88,9 +88,9 @@
 							</figure>
 							<a id="myDiaryBtn"
 								href="/farmstory/diary_book_write.action?regPotNo=${ myFlowerpots.regPotNo }&plaNo=${ myFlowerpots.plaNo }"
-								class="btn">다이어리 만들기</a>
+								class="btn"><i class="icon-book-1"></i>&nbsp;다이어리 만들기</a>
 								<!-- <a id="flowerPotInfoBtn"  class="btn" data-toggle="modal" data-target="#modal-value">화분정보 보기</a> -->
-								<a id="flowerPotInfoBtn" href="/farmstory/value/findTime.action?regPotNo=${ myFlowerpots.regPotNo }" class="btn" >화분정보 보기</a>
+								<a id="flowerPotInfoBtn" href="/farmstory/value/findTime.action?regPotNo=${ myFlowerpots.regPotNo }" class="btn" ><i class="icon-chart-bar-1"></i>&nbsp;화분정보</a>
 						</div>
 						<input id="myPotNo${ status.index }" type="hidden" name="regPotNo"
 							value="${ myFlowerpots.regPotNo }">
