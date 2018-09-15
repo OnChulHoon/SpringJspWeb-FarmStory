@@ -1,0 +1,169 @@
+/*===================================================================================*/
+/*	CUSTOM CSS STYLES - FarmStory
+/*===================================================================================*/
+
+/* ==== Span Style - Next Line : Start ============================= */
+.next-line {
+	display: block;
+}
+/* ==== Span Style - Next Line : End ============================= */
+
+/* ==== Fonts-Godo : Start ============================= */
+body, main, h1, h2, h4, .btn, span {
+	font-family: 'godoM';
+}
+
+/* ==== Fonts-Godo : End ============================= */
+
+/* ==== Home : Start ============================= */
+.main-img {
+	border: 1px solid #888888;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+/* ==== Home : End ============================= */
+
+/* ==== Header : Start ============================= */
+#logo, #logoM {
+	
+	height: 60px;
+}
+#welcome {
+	font-size: 14px;
+	padding-top: 10px;
+}
+
+#header-meun-bar {
+	font-size: 10px;
+}
+
+.icon-img {
+	width: 17px;
+	height: 17px;
+	margin-bottom: 3px;
+}
+
+/* ==== Header : End ============================= */
+
+/* ==== Footer : Start ============================= */
+#footerLogo {
+	
+	height: 100px;
+}
+/* ==== Footer : End ============================= */
+
+/* ==== Register & Login & Logout Modal : Start ============================= */
+
+/* --- Register Modal Custom --- */
+input.error, textarea.error{
+  border:1px dashed red;
+}
+label.error{
+  display:block;
+  color:red;
+  font-size: 13px;
+}
+.register {
+	width: 350px;
+	height: 650px;
+}
+.register-ok{
+	width: 350px;
+	height: 230px;
+}
+.modal-header {
+	border-top: 6px solid #7abb29;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom: 0;
+	padding: 10px 20px;
+	font-family: 'godoM';
+}
+.modal-title{
+	color: #7abb29;
+}
+
+.form-group {
+	padding: 0 18px;
+	border-color: #e5e5e5;
+	box-shadow: none;
+}
+
+.modal-footer {
+	padding: 10px 0px;
+	border-top: 0;
+	text-align: center;
+}
+
+.modal-body {
+	text-align: center;
+	padding: 10px 20px;
+}
+
+.btn-default {
+	width: 100%;
+	background-color: #7abb29;
+	border: none;
+	color: #fff;
+	margin-top: 3px;
+	font-family: 'godoM';
+}
+
+.modalChange {
+	font-size: 15px;
+}
+
+/* --- Login Modal Custom --- */
+.login {
+	width: 350px;
+	height: 380px;
+}
+
+/* --- Logout Modal Custom --- */
+.logout {
+	width: 350px;
+	height: 230px;
+}
+
+/* --- Login Check Modal Custom --- */
+.checkId, .checkPw {
+	width: 350px;
+	height: 210px;
+}
+
+/* ==== Register & Login & Logout Modal : End ============================= */
+
+/* ==== Plant List : Start ============================= */
+.plant-sub-title {
+	font-size: 17px;
+}
+
+.modify-ok {
+	width: 350px;
+	height: 280px;
+}
+
+/* ==== Plant List : End ============================= */
+
+/* ==== Plant Write&Update : Start ============================= */
+.writeMeunBtn {
+	margin-left: 15px;
+}
+
+#registerTitle, #modifyTitle {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+#registerForm, #modifyForm {
+	padding-top: 0px;
+}
+
+/* ==== Plant Write&Update : End ============================= */
+
+/* ==== Plant Detail : Start ============================= */
+.icon-detail {
+	margin-right: 0px;
+}
+
+/* ==== Plant Detail : End ============================= */
