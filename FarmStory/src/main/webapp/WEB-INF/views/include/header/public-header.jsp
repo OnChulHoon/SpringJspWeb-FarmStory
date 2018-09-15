@@ -3,31 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!-- Account Modal JavaScript -->
-<jsp:include page="/WEB-INF/views/include/account/account-jstl-js.jsp" />
-
-<style>
-
-#logo, #logoM {
-	
-	height: 60px;
-}
-
-</style>
-
 <header>
 
-	<!-- Account - Register Modal : START -->
-	<jsp:include page="/WEB-INF/views/include/account/modal-register.jsp" />
-	<!-- Account - Register Modal : END   -->
-
-	<!-- Account - Login Modal : START -->
-	<jsp:include page="/WEB-INF/views/include/account/modal-login.jsp" />
-	<!-- Account - Login Modal : END   -->
-
-	<!-- Account - Logout Modal : START -->
-	<jsp:include page="/WEB-INF/views/include/account/modal-logout.jsp" />
-	<!-- Account - Logout Modal : END   -->
+	
 	
 	<div class="navbar">
 		<div id="navbar-header" class="navbar-header">
@@ -74,18 +52,11 @@
 					<ul class="nav navbar-nav">
 
 						<li class="dropdown"><a href="/farmstory/cover_detail.action" class="dropdown-toggle"
-							data-toggle="dropdown">팜스토리 소개</a>
-							<c:if test="${not empty loginuser and loginuser.memType eq 'ADMIN'}">
-								<ul class="dropdown-menu">
-									<li><a href="/farmstory/cover_list.action">소개 페이지 목록 [관리자]</a></li>
-									<li><a href="/farmstory/cover_write.action">소개 페이지 쓰기 [관리자]</a></li>
-								</ul>
-								<!-- /.dropdown-menu -->
-							</c:if></li>
+							data-toggle="dropdown" >서비스 소개</a></li>
 						<!-- /.dropdown -->
 						
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">식물 키우기</a>
+							data-toggle="dropdown">식물</a>
 
 							<ul class="dropdown-menu">
 
@@ -99,10 +70,10 @@
 						<!-- /.dropdown -->
 
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">나의 화분</a>
+							data-toggle="dropdown">스마트 화분</a>
 
 							<ul class="dropdown-menu">
-								<li><a href="/farmstory/plant_regist.action">나의 화분 등록 하기</a></li>
+								<li><a href="/farmstory/plant_regist.action">나의 화분 등록</a></li>
 								<li><a href="/farmstory/my_flowerpot_list.action">나의 화분</a></li>
 							</ul> <!-- /.dropdown-menu --></li>
 						<!-- /.dropdown -->
@@ -124,6 +95,17 @@
 								<li><a href="/farmstory/board/interrupt_list.action">문의함</a></li>
 							</ul> <!-- /.dropdown-menu --></li>
 						<!-- /.dropdown -->
+						
+						<li class="dropdown"><a href="/farmstory/coming_soon.action?msg=shop" class="dropdown-toggle"
+							data-toggle="dropdown">Shop&nbsp;<img class="icon-img" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-flowerpot.png"></a>
+						</li>
+						<li class="dropdown pull-right searchbox"><a href="/farmstory/coming_soon.action?msg=basket" class="dropdown-toggle"
+							data-toggle="dropdown"><i class="icon-basket"></i></a>
+						</li>
+						
+						<li class="dropdown pull-right searchbox"><a href="/farmstory/coming_soon.action?msg=mobile" class="dropdown-toggle"
+							data-toggle="dropdown"><i class="icon-mobile"></i><img class="icon-img" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-android.png"><img class="icon-img" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-apple.png"></a>
+						</li>	
 
 						<c:if test="${not empty loginuser }">
 							<li class="dropdown pull-right searchbox"><a href="#"
@@ -133,8 +115,8 @@
 
 						<c:if test="${ empty loginuser }">
 							<li class="dropdown pull-right searchbox"><a href="#"
-								data-toggle="modal" data-target="#register">Sign Up&nbsp;<i
-									class="icon-user-1"></i></a></li>
+								data-toggle="modal" data-target="#register">Sign Up&nbsp;
+								<i class="icon-user-add"></i></a></li>
 
 							<li class="dropdown pull-right searchbox"><a href="#"
 								data-toggle="modal" data-target="#login">Login&nbsp;<i
@@ -153,4 +135,16 @@
 		<!-- /.yamm -->
 	</div>
 	<!-- /.navbar -->
+	
+	<!-- Account - Register Modal : START -->
+	<jsp:include page="/WEB-INF/views/include/account/modal-register.jsp" />
+	<!-- Account - Register Modal : END   -->
+
+	<!-- Account - Login Modal : START -->
+	<jsp:include page="/WEB-INF/views/include/account/modal-login.jsp" />
+	<!-- Account - Login Modal : END   -->
+
+	<!-- Account - Logout Modal : START -->
+	<jsp:include page="/WEB-INF/views/include/account/modal-logout.jsp" />
+	<!-- Account - Logout Modal : END   -->
 </header>

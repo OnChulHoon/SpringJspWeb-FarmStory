@@ -1,28 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<style type="text/css">
-input.error, textarea.error{
-  border:1px dashed red;
-}
-label.error{
-  display:block;
-  color:red;
-  font-size: 13px;
-}
-#modal-dialog-register {
-	width: 350px;
-	height: 650px;
-}
-</style>
-
 <div id="register" class="modal fade" role="dialog">
-	<div id="modal-dialog-register" class="modal-dialog " >
+	<div class="modal-dialog register" >
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">&nbsp;<i class="icon-user-1"></i>&nbsp;회원 가입</h4>
+				<h4 class="modal-title">&nbsp;<i class="icon-user-add"></i>&nbsp;회원 가입</h4>
 			</div>
 			<div class="modal-body">
 				<form id="registerForm" method="post" >
@@ -69,18 +54,18 @@ label.error{
 <!-- ================= Register Success Modal ===================================== -->
 
 <div id="registerSuccess" class="modal fade" role="dialog">
-	<div id="modal-dialog-logout" class="modal-dialog">
+	<div class="modal-dialog register-ok">
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header" >
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">&nbsp;<i class="icon-user-1"></i>&nbsp;회원가입 성공</h4>
 			</div>
-			<div class="modal-body" align="center">
-				<h4>회원가입이 완료되었습니다.<div>로그인 해주세요.</div></h4>
+			<div class="modal-body">
+				<h4>회원가입이 완료되었습니다.<span class="next-line">로그인 해주세요.</span></h4>
 			</div>
 			<div class="modal-footer">
-				<a class="btn callLoginModal" data-dismiss="modal" >로그인 하러가기</a>
+				<a class="btn callLoginModal" data-dismiss="modal" >로그인 하기</a>
 			</div>
 		</div>
 	</div>

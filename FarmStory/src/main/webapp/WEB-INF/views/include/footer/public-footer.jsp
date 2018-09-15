@@ -1,19 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<style>
-
-#footerLogo {
-	
-	height: 100px;
-}
-
-</style>
 <footer class="dark-bg">
 	<div class="container inner">
 		<div class="row">
 
-			<div class="col-md-3 col-sm-6 inner">
+			<div class="col-md-3 col-sm-6 inner ">
 				<a href="/farmstory/home.action"><img id="footerLogo" class=""
 					src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/farmstory-logo-white.png" alt=""></a>
 				<p>팜스토리는 당신의 식물을 보다 쉽게 키울 수 있도록 도와주는 서비스입니다.</p>
@@ -23,7 +15,7 @@
 
 
 
-			<div class="col-md-3 col-sm-6 inner">
+			<div class="col-md-3 col-sm-6 inner pull-right">
 				<h4>팜스토리를 만날려면</h4>
 				<p>우리는 여기서 일해요.</p>
 				<ul class="contacts">
@@ -36,7 +28,7 @@
 			</div>
 			<!-- /.col -->
 
-			<div class="col-md-3 col-sm-6 inner">
+			<div class="col-md-3 col-sm-6 inner pull-right">
 				<h4>팜스토리의 소식을 듣고 싶나요?</h4>
 				<p>새로운 소식을 언제든지 받고 싶다면 당신의 이메일을 알려주세요. <br>우리는 언제든지 환영합니다.</p>
 				<form id="newsletter" class="form-inline newsletter" role="form">

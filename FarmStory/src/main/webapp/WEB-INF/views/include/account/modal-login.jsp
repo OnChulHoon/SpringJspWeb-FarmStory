@@ -4,7 +4,7 @@
 <!-- ================= Login Modal ===========================================-->
 
 <div id="login" class="modal fade" role="dialog">
-	<div id="modal-dialog-login" class="modal-dialog">
+	<div class="modal-dialog login">
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
@@ -41,14 +41,14 @@
 <!-- ================= Login Check Modal ===================================== -->
 
 <div id="wrongId" class="modal fade" role="dialog">
-	<div id="modal-dialog-login-checkId" class="modal-dialog">
+	<div class="modal-dialog checkId">
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header" >
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">&nbsp;<i class="icon-login-1"></i>&nbsp;로그인 오류</h4>
 			</div>
-			<div class="modal-body" align="center">
+			<div class="modal-body">
 				<h4>아이디를 찾을 수 없습니다.</h4>
 			</div>
 			<div class="modal-footer">
@@ -59,14 +59,14 @@
 </div>
 
 <div id="wrongPw" class="modal fade" role="dialog">
-	<div id="modal-dialog-login-checkPw" class="modal-dialog">
+	<div class="modal-dialog checkPw">
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header" >
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">&nbsp;<i class="icon-login-1"></i>&nbsp;로그인 오류</h4>
 			</div>
-			<div class="modal-body" align="center">
+			<div class="modal-body">
 				<h4>비밀번호를 잘못 입력했습니다.</h4>
 			</div>
 			<div class="modal-footer">
@@ -77,14 +77,14 @@
 </div>
 
 <div id="checkedLogin" class="modal fade" role="dialog">
-	<div id="modal-dialog-login-checkId" class="modal-dialog">
+	<div class="modal-dialog checkId">
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header" >
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">&nbsp;<i class="icon-login-1"></i>&nbsp;로그인 오류</h4>
 			</div>
-			<div class="modal-body" align="center">
+			<div class="modal-body">
 				<h4>로그인 하신 후 이용해주세요.</h4>
 			</div>
 			<div class="modal-footer">
