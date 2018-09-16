@@ -6,6 +6,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <!-- Account Modal JavaScript & JSTL -->
 <jsp:include page="/WEB-INF/views/include/account/account-jstl-js.jsp" />
+<!-- Header JavaScript -->
+<script src="/farmstory/resources/assets/js/header.js"></script>
 
 <script src="/farmstory/resources/assets/js/jquery.min.js"></script>
 <script src="/farmstory/resources/assets/js/jquery.easing.1.3.min.js"></script>

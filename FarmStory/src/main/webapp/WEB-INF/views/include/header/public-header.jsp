@@ -4,18 +4,15 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <header>
-
-	
-	
 	<div class="navbar">
 		<div id="navbar-header" class="navbar-header">
 			<div class="container">
 
 				<!-- ============================================================= LOGO MOBILE ============================================================= -->
 
-				<a  class="navbar-brand" href="/farmstory/home.action"><img id="logoM"
+				<a  id="logo-farmstory-mobile" class="navbar-brand" href="#"><img id="logoM"
 					src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/farmstory-logo.gif" class=""
-					alt=""></a>
+					alt="logo-farmstory-mobile"></a>
 
 				<!-- ============================================================= LOGO MOBILE : END ============================================================= -->
 
@@ -41,9 +38,9 @@
 				<div class="container">
 					<!-- ============================================================= LOGO ============================================================= -->
 
-					<a  class="navbar-brand" href="/farmstory/home.action"><img id="logo"
+					<a  id="logo-farmstory-web" class="navbar-brand" href="#"><img id="logo"
 						src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/farmstory-logo.gif" 
-						alt=""></a>
+						alt="logo-farmstory-web"></a>
 
 					<!-- ============================================================= LOGO : END ============================================================= -->
 
@@ -51,7 +48,7 @@
 
 					<ul class="nav navbar-nav">
 
-						<li class="dropdown"><a href="/farmstory/cover_detail.action" class="dropdown-toggle"
+						<li class="dropdown"><a id="introduce" href="#" class="dropdown-toggle"
 							data-toggle="dropdown" >서비스 소개</a></li>
 						<!-- /.dropdown -->
 						
@@ -61,10 +58,10 @@
 							<ul class="dropdown-menu">
 
 								<c:if test="${not empty loginuser and loginuser.memType eq 'ADMIN'}">
-									<li><a href="/farmstory/plant_write.action">식물 정보 등록 [관리자]</a></li>
+									<li><a id="plant_write" href="#">식물 정보 등록 [관리자]</a></li>
 								</c:if>
 
-								<li><a href="/farmstory/plant_list.action">식물 정보</a></li>
+								<li><a id="plant_list" href="#">식물 정보</a></li>
 
 							</ul> <!-- /.dropdown-menu --></li>
 						<!-- /.dropdown -->
@@ -73,38 +70,40 @@
 							data-toggle="dropdown">스마트 화분</a>
 
 							<ul class="dropdown-menu">
-								<li><a href="/farmstory/plant_regist.action">나의 화분 등록</a></li>
-								<li><a href="/farmstory/my_flowerpot_list.action">나의 화분</a></li>
+								<li><a id="plant_regist" href="#">나의 화분 등록</a></li>
+								<li><a id="my_flowerpot_list" href="#">나의 화분</a></li>
 							</ul> <!-- /.dropdown-menu --></li>
 						<!-- /.dropdown -->
 						
-						<li class="dropdown"><a href="/farmstory/diary_book_list.action" class="dropdown-toggle"
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">다이어리</a>
 							
 							<ul class="dropdown-menu">
-								<li><a href="/farmstory/diary_book_list.action">나의 다이어리</a></li>
+								<li><a id="diary_book_list" href="#">나의 다이어리</a></li>
 							</ul> <!-- /.dropdown-menu --></li>
 						<!-- /.dropdown -->
 
 
-						<li class="dropdown"><a href="/farmstory/board/notice_list.action" class="dropdown-toggle"
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown">고객센터</a>
 						
 						<ul class="dropdown-menu">
-								<li><a href="/farmstory/board/notice_list.action">공지사항</a></li>
-								<li><a href="/farmstory/board/interrupt_list.action">문의함</a></li>
+								<li><a id="notice_list" href="#">공지사항</a></li>
+								<li><a id="interrupt_list" href="#">문의함</a></li>
 							</ul> <!-- /.dropdown-menu --></li>
 						<!-- /.dropdown -->
 						
-						<li class="dropdown"><a href="/farmstory/coming_soon.action?msg=shop" class="dropdown-toggle"
-							data-toggle="dropdown">Shop&nbsp;<img class="icon-img" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-flowerpot.png"></a>
+						<li class="dropdown"><a id="smart-pot-shop" href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Shop&nbsp;
+							<img class="icon-img" alt="icon-shop" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-flowerpot.png"></a>
 						</li>
-						<li class="dropdown pull-right searchbox"><a href="/farmstory/coming_soon.action?msg=basket" class="dropdown-toggle"
+						<li class="dropdown pull-right searchbox"><a id="shop-basket" href="#" class="dropdown-toggle"
 							data-toggle="dropdown"><i class="icon-basket"></i></a>
 						</li>
 						
-						<li class="dropdown pull-right searchbox"><a href="/farmstory/coming_soon.action?msg=mobile" class="dropdown-toggle"
-							data-toggle="dropdown"><i class="icon-mobile"></i><img class="icon-img" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-android.png"><img class="icon-img" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-apple.png"></a>
+						<li class="dropdown pull-right searchbox"><a id="mobile-app" href="#" class="dropdown-toggle"
+							data-toggle="dropdown"><i class="icon-mobile"></i><img class="icon-img" alt="icon-android" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-android.png">
+							<img class="icon-img" alt="icon-apple" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-apple.png"></a>
 						</li>	
 
 						<c:if test="${not empty loginuser }">
@@ -126,7 +125,6 @@
 					<!-- /.nav -->
 
 					<!-- ============================================================= MAIN NAVIGATION : END ============================================================= -->
-
 				</div>
 				<!-- /.container -->
 			</div>
@@ -138,13 +136,13 @@
 	
 	<!-- Account - Register Modal : START -->
 	<jsp:include page="/WEB-INF/views/include/account/modal-register.jsp" />
-	<!-- Account - Register Modal : END   -->
+	<!-- Account - Register Modal : END -->
 
 	<!-- Account - Login Modal : START -->
 	<jsp:include page="/WEB-INF/views/include/account/modal-login.jsp" />
-	<!-- Account - Login Modal : END   -->
+	<!-- Account - Login Modal : END -->
 
 	<!-- Account - Logout Modal : START -->
 	<jsp:include page="/WEB-INF/views/include/account/modal-logout.jsp" />
-	<!-- Account - Logout Modal : END   -->
+	<!-- Account - Logout Modal : END -->
 </header>

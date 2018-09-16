@@ -63,8 +63,9 @@
 	/* =================== Plant Write&Update : End  ====================================================== */
 	
 	/* =================== Plant Modify&Delete : Start  ====================================================== */
-		<c:if test="${updateComplete eq 'modifyOk'}">
+		<c:if test="${ param.updateCheck eq 'modifyOk' }">
 			$("#modifyOk").modal("show");
+			alert("정보 수정이 완료되었습니다.");
 		</c:if>
 		$("#deleteInfoBtn").on("click", function(event) {
 			event.preventDefault();

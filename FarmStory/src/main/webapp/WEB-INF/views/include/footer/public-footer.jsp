@@ -12,10 +12,32 @@
 				<a href="/farmstory/cover_detail.action" class="txt-btn">자세히 확인하기</a>
 			</div>
 			<!-- /.col -->
-
-
-
-			<div class="col-md-3 col-sm-6 inner pull-right">
+			
+			<div class="col-md-3 col-sm-6 inner social-network">
+				<h3>Social</h3>
+				<ul class="social">
+					<li><a href="#"><i class="icon-s-facebook"></i></a></li>
+					<li><a href="#"><i class="icon-s-gplus"></i></a></li>
+					<li><a href="#"><i class="icon-s-twitter"></i></a></li>
+					<li><a href="#"><i class="icon-s-pinterest"></i></a></li>
+					<li><a href="#"><i class="icon-s-behance"></i></a></li>
+					<li><a href="#"><i class="icon-s-dribbble"></i></a></li>
+				</ul><!-- /.social -->
+			</div><!-- /.social-network -->			
+			
+			<div class="col-md-3 col-sm-6 inner">
+				<h4>팜스토리의 소식을 듣고 싶나요?</h4>
+				<p>새로운 소식을 언제든지 받고 싶다면 당신의 이메일을 알려주세요. <br>우리는 언제든지 환영합니다.</p>
+				<form id="newsletter" class="form-inline newsletter">
+					<label class="sr-only" for="exampleInputEmail">Email
+						address</label> <input type="email" class="form-control"
+						id="exampleInputEmail" placeholder="이메일 주소를 알려주세요">
+					<button type="submit" class="btn btn-default btn-submit">구독 신청</button>
+				</form>
+			</div>
+			<!-- /.col -->
+			
+			<div class="col-md-3 col-sm-6 inner">
 				<h4>팜스토리를 만날려면</h4>
 				<p>우리는 여기서 일해요.</p>
 				<ul class="contacts">
@@ -27,19 +49,6 @@
 				<!-- /.contacts -->
 			</div>
 			<!-- /.col -->
-
-			<div class="col-md-3 col-sm-6 inner pull-right">
-				<h4>팜스토리의 소식을 듣고 싶나요?</h4>
-				<p>새로운 소식을 언제든지 받고 싶다면 당신의 이메일을 알려주세요. <br>우리는 언제든지 환영합니다.</p>
-				<form id="newsletter" class="form-inline newsletter" role="form">
-					<label class="sr-only" for="exampleInputEmail">Email
-						address</label> <input type="email" class="form-control"
-						id="exampleInputEmail" placeholder="이메일 주소를 알려주세요">
-					<button type="submit" class="btn btn-default btn-submit">구독 신청</button>
-				</form>
-			</div>
-			<!-- /.col -->
-
 		</div>
 		<!-- /.row -->
 	</div>

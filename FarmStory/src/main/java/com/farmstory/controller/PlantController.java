@@ -91,9 +91,7 @@ public class PlantController {
 						if (firstUploadFile.exists()) {
 							firstUploadFile.delete();
 						}
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+					} catch (Exception e) {e.printStackTrace();}
 				} else {
 					// 저장할 상세 페이지 이미지의 이름을 PlantImg vo에 저장한다.
 					plantImg.setPliImg("resize_" + uniqueFileName);
@@ -112,12 +110,8 @@ public class PlantController {
 						// 파일의 존재여부를 확인하여 삭제를 실행한다.
 						if (firstUploadFile.exists()) {
 							firstUploadFile.delete();
-							System.out.println("처음 업로드 파일 삭제 완료(resize)");
 						}
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-
+					} catch (Exception e) {e.printStackTrace();}
 				}
 				// 업로드된 여러개의 이미지 파일을 List<PlantImg>형식으로 객체에 저장한다.
 				imgFiles.add(plantImg);
@@ -153,6 +147,7 @@ public class PlantController {
 	@GetMapping(value = "/plant_delete.action")
 	public String deletePlantInfoWithImages(@RequestParam(value = "plaNo") int plaNo, PlantImg plantImg, HttpServletRequest request) {
 		
+		String retrunUrl = "";
 		// 삭제할 식물 정보의 사진 파일들의 정보를 찾는다.
 		List<PlantImg> oldImages = plantService.findModifyImagesPlantInfoByPlaNo(plaNo);
 		// 사진파일들의 정보가 있을 경우 모두 삭제한다.
@@ -164,9 +159,12 @@ public class PlantController {
 			}
 			// 삭제할 식물 정보를 데이터베이스에서 삭제한다.
 			plantService.deletePlantInfoWithImages(plaNo);
+			retrunUrl = "redirect:/plant_list.action?";
+		}else {
+			
 		}
 		
-		return "redirect:/plant_list.action";
+		return retrunUrl;
 	}
 
 	@GetMapping(value = "/plant_update.action")
@@ -226,15 +224,13 @@ public class PlantController {
 					if (firstUploadFile.exists()) {
 						firstUploadFile.delete();
 					}
-
+					// 변경을 실행하기 전 기존 파일을 찾아 삭제한다.
 					File oldUploadFile = new File(fileUploadPath + "/" + oldImgFileNames[0]);
 					// 파일의 존재여부를 확인하여 삭제를 실행한다.
 					if (oldUploadFile.exists()) {
 						oldUploadFile.delete();
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				} catch (Exception e) {e.printStackTrace();}
 				// 미리보기 사진을 DB에서 찾아 수정한다.
 				plantService.modifyThumnailImagePlantInfo(plantThumImg);
 			}
@@ -272,17 +268,8 @@ public class PlantController {
 							// 파일의 존재여부를 확인하여 삭제를 실행한다.
 							if (firstUploadFile.exists()) {
 								firstUploadFile.delete();
-								System.out.println("처음 업로드 파일 삭제 완료(resize)");
 							}
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-
-						// 테스트를 위한 업로드된 파일 정보를 받아온다.
-						long fileSize = mf.getSize(); // 파일 사이즈 정보를 받아온다.
-						System.out.println("resize_uniqueFileName : " + uniqueFileName);
-						System.out.println("fileSize : " + fileSize);
-
+						} catch (Exception e) {e.printStackTrace();}
 						// 업로드된 여러개의 이미지 파일을 List<PlantImg>형식으로 객체에 저장한다.
 						imgFiles.add(plantDetailImg);
 					}
@@ -297,7 +284,7 @@ public class PlantController {
 
 			// DB에 수정된 데이터를 입력한다.
 			plantService.modifyPlantInfo(plant);
-			returnUrl = "redirect:plant_detail.action?plaNo="+ plaNo;
+			returnUrl = "redirect:plant_detail.action?updateCheck=modifyOk&plaNo="+ plaNo;
 		}
 		
 		return returnUrl;
