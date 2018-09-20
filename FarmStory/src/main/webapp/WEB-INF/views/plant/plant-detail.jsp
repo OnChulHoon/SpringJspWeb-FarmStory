@@ -20,12 +20,6 @@
 <!-- Core CSS & AddOn/Plugin CSS & Custom CSS & Fonts & Icons/Glyphs & Favicon -->
 <jsp:include page="/WEB-INF/views/include/style/public-style.jsp" />
 
-<style type="text/css">
-.detailVal{
-	font-size: 15px;
-}
-</style>
-
 </head>
 
 <body>
@@ -36,10 +30,9 @@
 
 	<!-- ============================================================= HEADER : END ============================================================= -->
 
-
 	<!-- ============================================================= MAIN ============================================================= -->
 
-	<main> <!-- ============================================================= SECTION â PORTFOLIO POST ============================================================= -->
+	<main> <!-- ============================================================= SECTION PLANT DETAIL ============================================================= -->
 
 	<section id="portfolio-post">
 		<div class="container inner-top-md">
@@ -83,12 +76,7 @@
 						<a id="modifyInfoBtn" class="btn">수정하기</a>
 						<a class="btn" data-toggle="modal" data-target="#deleteConfirm">삭제하기</a>
 					</div>
-					<style>
-						#modal-dialog-delete{
-							width: 350px;
-							height: 240px;
-						}
-					</style>
+					<!-- Delete Confirm Modal -->
 					<div id="deleteConfirm" class="modal fade" role="dialog">
 						<div id="modal-dialog-delete" class="modal-dialog">
 							<!-- Modal content-->
@@ -111,18 +99,39 @@
 							</div>
 						</div>
 					</div>
+					<!-- Modify Success Modal -->
+					<div id="modifyOk" class="modal fade" role="dialog">
+						<div class="modal-dialog modify-ok">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">
+										&nbsp;<i class="icon-login-1"></i>&nbsp;확인 메시지
+									</h4>
+								</div>
+								<div class="modal-body">
+									<h4>
+										정보 수정이 완료되었습니다.
+									</h4>
+								</div>
+								<div class="modal-footer">
+									<a class="btn" data-dismiss="modal" aria-hidden="true">확인</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</c:if>
 			</div>
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->
-
 	</section>
 
-	<!-- ============================================================= SECTION â PORTFOLIO POST : END ============================================================= -->
+	<!-- ============================================================= SECTION PLANT DETAIL : END ============================================================= -->
 
 
-	<!-- ============================================================= SECTION â MORE WORKS ============================================================= -->
+	<!-- ============================================================= SECTION MORE PLANT ============================================================= -->
 
 	<section id="more-works">
 		<div class="container inner-top-sm inner-bottom">
@@ -195,12 +204,10 @@
 		</div>
 		<!-- /.container -->
 	</section>
-
-	<!-- ============================================================= SECTION â MORE WORKS : END ============================================================= -->
-
-
+	
+	<!-- ============================================================= SECTION MORE PLANT : END ============================================================= -->
 	</main>
-
+	
 	<!-- ============================================================= MAIN : END ============================================================= -->
 
 
@@ -211,7 +218,7 @@
 	<!-- ============================================================= FOOTER : END ============================================================= -->
 
 	<!-- ============================================================= JAVASCRIPT ============================================================= -->
-
+	
 	<jsp:include page="/WEB-INF/views/include/javascript/public-js.jsp" />
 
 	<jsp:include page="/WEB-INF/views/plant/js/plant-jstl-js.jsp" />

@@ -102,7 +102,7 @@
 						</li>
 						
 						<li class="dropdown pull-right searchbox"><a id="mobile-app" href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><i class="icon-mobile"></i><img class="icon-img" alt="icon-android" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-android.png">
+							data-toggle="dropdown"><i class="icon-mobile"></i>&nbsp;<img class="icon-img" alt="icon-android" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-android.png">
 							<img class="icon-img" alt="icon-apple" src="http://och1110.cdn3.cafe24.com/farmstory/resources/assets/images/header/icon-apple.png"></a>
 						</li>	
 

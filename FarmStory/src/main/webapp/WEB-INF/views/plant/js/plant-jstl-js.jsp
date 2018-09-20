@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<script type="text/javascript">
+<script>
 	/* =================== Plant Write&Update : Start  ====================================================== */
 		
 		// 사진 파일 업로드 폼을 추가하는 스크립트이다.

@@ -47,9 +47,20 @@ body, main, h1, h2, h4, .btn, span {
 
 /* ==== Footer : Start ============================= */
 #footerLogo {
-	
 	height: 100px;
 }
+
+#html5Check {
+	width: 80px;
+	height: 15px;
+}
+
+#cssCheck {
+	border: 0;
+	width: 43px;
+	height: 15px;
+}
+
 /* ==== Footer : End ============================= */
 
 /* ==== Register & Login & Logout Modal : Start ============================= */
@@ -133,19 +144,10 @@ label.error{
 
 /* ==== Register & Login & Logout Modal : End ============================= */
 
-/* ==== Plant List : Start ============================= */
-.plant-sub-title {
-	font-size: 17px;
-}
 
-.modify-ok {
-	width: 350px;
-	height: 280px;
-}
+/* ==== Plant : Start ============================= */
 
-/* ==== Plant List : End ============================= */
-
-/* ==== Plant Write&Update : Start ============================= */
+/* --- Plant Write&Update --- */
 .writeMeunBtn {
 	margin-left: 15px;
 }
@@ -159,11 +161,24 @@ label.error{
 	padding-top: 0px;
 }
 
-/* ==== Plant Write&Update : End ============================= */
+/* --- Plant List --- */
+.plant-sub-title {
+	font-size: 17px;
+}
 
-/* ==== Plant Detail : Start ============================= */
+/* --- Plant Detail --- */
 .icon-detail {
 	margin-right: 0px;
 }
 
-/* ==== Plant Detail : End ============================= */
+#modal-dialog-delete{
+	width: 350px;
+	height: 240px;
+}
+
+.modify-ok {
+	width: 350px;
+	height: 280px;
+}
+
+/* ==== Plant : End ============================= */

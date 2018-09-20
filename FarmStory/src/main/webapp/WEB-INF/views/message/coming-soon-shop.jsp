@@ -92,7 +92,7 @@
 								<form class="form-inline" id="fh5co-header-subscribe">
 									<div class="col-md-12 col-md-offset-0">
 										<div class="form-group">
-											<input type="text" class="form-control bg-focus" id="email" placeholder="소식지 받을 이메일 주소를 알려주세요.">
+											<input type="text" class="form-control bg-focus" id="email" placeholder="소식 받을 이메일 주소를 알려주세요.">
 											<button type="submit" class="btn btn-primary">보내기</button>
 										</div>
 									</div>

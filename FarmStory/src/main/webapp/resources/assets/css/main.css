@@ -64,7 +64,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
 	/*-moz-osx-font-smoothing: grayscale;*/
-	text-rendering: optimizeLegibility;
+	
 	overflow-x: hidden !important;
 }
 .navbar,
@@ -2270,7 +2270,7 @@ p .btn {
 	height: 0;
 	width: 0;
 	border: solid transparent;
-	pointer-events: none;
+	
 	-webkit-transition: all 200ms ease-out;
 	   -moz-transition: all 200ms ease-out;
 		 -o-transition: all 200ms ease-out;
@@ -3520,7 +3520,7 @@ blockquote:before {
     padding: 0;
 }
 .forms ol li {
-    line-height: auto;
+    line-height: 100%;
     list-style: none;
 }
 input,

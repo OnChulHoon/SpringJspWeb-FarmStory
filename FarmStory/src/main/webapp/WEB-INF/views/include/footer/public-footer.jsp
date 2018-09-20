@@ -13,18 +13,6 @@
 			</div>
 			<!-- /.col -->
 			
-			<div class="col-md-3 col-sm-6 inner social-network">
-				<h3>Social</h3>
-				<ul class="social">
-					<li><a href="#"><i class="icon-s-facebook"></i></a></li>
-					<li><a href="#"><i class="icon-s-gplus"></i></a></li>
-					<li><a href="#"><i class="icon-s-twitter"></i></a></li>
-					<li><a href="#"><i class="icon-s-pinterest"></i></a></li>
-					<li><a href="#"><i class="icon-s-behance"></i></a></li>
-					<li><a href="#"><i class="icon-s-dribbble"></i></a></li>
-				</ul><!-- /.social -->
-			</div><!-- /.social-network -->			
-			
 			<div class="col-md-3 col-sm-6 inner">
 				<h4>팜스토리의 소식을 듣고 싶나요?</h4>
 				<p>새로운 소식을 언제든지 받고 싶다면 당신의 이메일을 알려주세요. <br>우리는 언제든지 환영합니다.</p>
@@ -49,6 +37,25 @@
 				<!-- /.contacts -->
 			</div>
 			<!-- /.col -->
+			
+			<div class="col-md-3 col-sm-6 inner social-network">
+				<h4>Social</h4>
+				<ul class="social">
+					<li><a href="#"><i class="icon-s-facebook"></i></a></li>
+					<li><a href="#"><i class="icon-s-gplus"></i></a></li>
+					<li><a href="#"><i class="icon-s-twitter"></i></a></li>
+					<li><a href="#"><i class="icon-s-pinterest"></i></a></li>
+					<li><a href="#"><i class="icon-s-behance"></i></a></li>
+					<li><a href="#"><i class="icon-s-dribbble"></i></a></li>
+				</ul><!-- /.social -->
+			<p>Web Standards Certification <a href="http://validator.kldp.org/check?uri=referer"
+			      onclick="this.href=this.href.replace(/referer$/,encodeURIComponent(document.URL))"><img id="html5Check"
+			      src="//validator.kldp.org/w3cimgs/validate/html5-blue.png" alt="Valid HTML 5"></a>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+					<img id="cssCheck" src="//jigsaw.w3.org/css-validator/images/vcss-blue"
+						alt="올바른 CSS입니다!" /></a>
+			</p>
+			</div><!-- /.social-network -->	
 		</div>
 		<!-- /.row -->
 	</div>
@@ -57,6 +64,7 @@
 	<div class="footer-bottom">
 		<div class="container inner">
 			<p class="pull-left">Copyright&copy; 2018. All Rights Reserved by Team Femme Fatale.</p>
+			
 			<ul class="footer-menu pull-right">
 				<li><a href="/farmstory/home.action">Home</a></li>
 				<li><a href="/farmstory/cover_detail.action">Introduce</a></li>
@@ -67,6 +75,9 @@
 			<!-- .footer-menu -->
 		</div>
 		<!-- .container -->
+			
+			
+			
 	</div>
 	<!-- .footer-bottom -->
 </footer>
