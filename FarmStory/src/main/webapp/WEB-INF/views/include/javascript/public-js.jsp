@@ -8,6 +8,8 @@
 <jsp:include page="/WEB-INF/views/include/account/account-jstl-js.jsp" />
 <!-- Header JavaScript -->
 <script src="/farmstory/resources/assets/js/header.js"></script>
+<!-- Footer JavaScript -->
+<script src="/farmstory/resources/assets/js/footer.js"></script>
 
 <script src="/farmstory/resources/assets/js/jquery.min.js"></script>
 <script src="/farmstory/resources/assets/js/jquery.easing.1.3.min.js"></script>

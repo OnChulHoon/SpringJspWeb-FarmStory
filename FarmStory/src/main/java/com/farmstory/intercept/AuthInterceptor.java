@@ -40,6 +40,13 @@ public class AuthInterceptor implements HandlerInterceptor{
 		if (!redirect) {
 			// 로그인 하지 않는 경우 요청 이전 페이지로 checkedLogin과 returnUrl 값을 포함하여 이동시킨다.
 			String checkedLogin = "";
+			if(previousUrl.contains("checkedLogin")) {
+				if(previousUrl.contains("plaNo")) {
+					previousUrl = previousUrl.substring(0, previousUrl.indexOf("&"));
+				}else {
+					previousUrl = previousUrl.substring(0, previousUrl.indexOf("?"));
+				}
+			}
 			if(previousUrl.contains("?")) {
 				checkedLogin = "&checkedLogin=empty";
 			} else {

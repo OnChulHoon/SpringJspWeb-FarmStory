@@ -5,7 +5,7 @@
 
 
 <!-- AddOn/Plugin CSS -->
-<link href="/farmstory/resources/assets/css/farmstory.css" rel="stylesheet"
+<link href="/farmstory/resources/assets/css/color.farmstory.css" rel="stylesheet"
 	title="Color">
 <link href="/farmstory/resources/assets/css/owl.carousel.css"
 	rel="stylesheet">

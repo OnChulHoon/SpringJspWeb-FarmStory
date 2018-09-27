@@ -41,15 +41,17 @@
 	
 	<!-- 아두이노를 이용한 센서값 불러오기 -->
 	<import resource="classpath:com/farmstory/config/sensor-config.xml" />
+	
+	<!-- 공지사항 및 건의사항 관리 -->
 	<import resource="classpath:com/farmstory/config/notice-config.xml" />
 		
-	<!-- 나의 화분등록 정보보기 -->
+	<!-- 스마트 화분등록 정보보기 -->
 	<import resource="classpath:com/farmstory/config/registplant-config.xml"/>
 	
-	<!-- 나의 화분 정보보기 -->
+	<!-- 스마트 화분 정보보기 -->
 	<import resource="classpath:com/farmstory/config/value-config.xml"/>
 	
-	<!-- 나의 화분 다이어리 -->
+	<!-- 나의 스마트 화분 다이어리 -->
 	<import resource="classpath:com/farmstory/config/diary-config.xml"/>
 	
 	<!-- 식물 정보 관리 -->
@@ -57,6 +59,9 @@
 	
 	<!-- 소개 페이지 관리 -->
 	<import resource="classpath:com/farmstory/config/cover-config.xml" />
+	
+	<!-- 메시지 관리 -->
+	<import resource="classpath:com/farmstory/config/message-config.xml" />
 	
 
 

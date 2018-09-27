@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.farmstory.mapper.MessageMapper">
+	
+	<insert id="insertEmailSubscribe" parameterType="EmailSub">
+		INSERT INTO EMAIL_SUB (SUB_EMAIL, SUB_TYPE)
+		VALUES (#{ subEmail }, #{ subType })
+	</insert>
+	
+	<select id="selectSubscribeEmailBySubEmail" resultType="int">
+		SELECT COUNT(SUB_EMAIL)
+		FROM EMAIL_SUB
+		WHERE SUB_EMAIL = #{ subEmail }
+		AND SUB_TYPE = "newsletter-footer"
+	</select>
+	
+</mapper>  

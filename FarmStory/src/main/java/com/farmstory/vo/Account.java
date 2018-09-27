@@ -1,6 +1,8 @@
 package com.farmstory.vo;
 
-//회원정보를 DB에 저장하기 위한 vo 개체
+import java.sql.Date;
+
+//회원정보를 DB에 저장하기 위한 vo 객체
 public class Account {
 	
 	private String memId;
@@ -9,6 +11,7 @@ public class Account {
 	private String memEmail;
 	private String memPhone;
 	private String memType;
+	private Date regDate;
 	
 	
 	public String getMemId() {
@@ -46,6 +49,12 @@ public class Account {
 	}
 	public void setMemType(String memType) {
 		this.memType = memType;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 	
 }

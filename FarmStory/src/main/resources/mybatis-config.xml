@@ -20,6 +20,7 @@
 		<typeAlias type="com.farmstory.vo.Cover" alias="Cover"/>
 		<typeAlias type="com.farmstory.vo.Notice" alias="Notice"/>
 		<typeAlias type="com.farmstory.vo.Alarm" alias="Alarm"/>
+		<typeAlias type="com.farmstory.vo.EmailSub" alias="EmailSub"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -43,6 +44,7 @@
 		<mapper resource="com/farmstory/mapper/diary-mapper.xml"/>
 		<mapper resource="com/farmstory/mapper/plant-mapper.xml"/>
 		<mapper resource="com/farmstory/mapper/cover-mapper.xml"/>
+		<mapper resource="com/farmstory/mapper/message-mapper.xml"/>
 	</mappers>
 
 </configuration>
